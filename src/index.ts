@@ -134,6 +134,7 @@ app.post('/api/webhooks/:webhookID/:webhookSecret/:from', async (req, res) => {
             // seems dumb, but this is the best way I know how to format these headers in a way we can use them
             const headersString = JSON.stringify(req.headers)
             const headersObject = JSON.parse(headersString)
+            console.log('req.body', req.body)
             discordPayload = await instance.parse(req.body, headersObject, queryObject)
         } catch (error) {
             res.sendStatus(500)
